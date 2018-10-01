@@ -1,0 +1,24 @@
+Given a singly linked list L: L0→L1→…→Ln-1→Ln,
+reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→…
+
+You may not modify the values in the list's nodes, only nodes itself may be changed.
+
+Example 1:
+
+Given 1->2->3->4, reorder it to 1->4->2->3.
+Example 2:
+
+Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
+
+
+算法
+(链表，模拟) O(n)O(n)
+假设初始的链表是 L1→L2→L3→…→Ln。
+
+分两步处理：
+
+1. 将后半段的指针都反向，变成：L1→L2→L3→…→L⌈n/2⌉←L⌈n/2⌉+1←…←Ln;
+
+2.用两个指针分别从1和n开始往中间扫描，将后半段交替插入到前半段，变成：L1→Ln→L2→Ln−1→…;
+
+时间复杂度分析：整个链表总共扫描三次，第一次求总长度，第二次将后半段反向，第三次将后半段交替插入前半段，所以总时间复杂度是O(n)。

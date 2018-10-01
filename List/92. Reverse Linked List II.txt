@@ -1,0 +1,22 @@
+Reverse a linked list from position m to n. Do it in one-pass.
+
+Note: 1 ≤ m ≤ n ≤ length of list.
+
+Example:
+
+Input: 1->2->3->4->5->NULL, m = 2, n = 4
+Output: 1->4->3->2->5->NULL
+
+
+
+算法
+(模拟) O(n)
+
+第一步，我们先将 m 到 n 之间的指针翻转（不包含第 m 个节点)
+
+第二步我们将 m 的指针指向 c，将 a 的指针指向 n
+
+此时我们就完成了 m 到 n 之间的翻转！
+
+时间复杂度分析：整个链表只遍历了一遍，所以时间复杂度是O(n)。
+

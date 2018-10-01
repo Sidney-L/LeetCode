@@ -1,0 +1,13 @@
+A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
+
+Return a deep copy of the list.
+
+
+
+算法
+(哈希表) O(n)
+用哈希表维护新旧链表节点之间的对应关系。
+
+从前往后扫描旧链表，对于每个节点的两条边（*next以及*random），如果新链表中对应的点还未创建，则创建节点，并将新节点与旧链表中的节点关联起来，然后根据节点之间的映射关系，在新链表中添加这两条边（*next以及*random）。
+
+时间复杂度分析：整个链表仅被扫描一遍，所以时间复杂度是 O(n)。

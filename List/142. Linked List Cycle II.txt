@@ -1,0 +1,19 @@
+Given a linked list, return the node where the cycle begins. If there is no cycle, return null.
+
+Note: Do not modify the linked list.
+
+Follow up:
+Can you solve it without using extra space?
+
+算法
+(链表，指针扫描) O(n)
+本题的做法比较巧妙。
+用两个指针 first,second 分别从起点开始走，first 每次走一步，second 每次走两步。
+如果过程中 second 走到null，则说明不存在环。否则当 first 和 second 相遇后，让 first 返回起点，secondsecond 待在原地不动，然后两个指针每次分别走一步，当相遇时，相遇点就是环的入口。
+
+证明：如上图所示，a 是起点，b 是环的入口，c 是两个指针的第一次相遇点，ab 之间的距离是 x，bc 之间的距离是 y。
+则当 first 走到 b时，由于 second 比 firstfirst 多走一倍的路，所以 second 已经从 b 开始在环上走了 xx 步，可能多余1圈，距离 bb 还差 yy 步（这是因为第一次相遇点在 b 之后 y 步，我们让 first退回 b 点，则 second 会退 2y 步，也就是距离 bb 点还差 yy 步）；所以 second 从 b 点走 x+y 步即可回到 b点，所以 secon 从 c 点开始走，走 x 步即可恰好走到 b 点，同时让 first 从头开始走，走 x 步也恰好可以走到 b 点。所以第二次相遇点就是 b 点。
+
+另一种思路，可以用公式来说明：a,b,c,x,y 的含义同上，我们用 z 表示从 cc 点顺时针走到 bb 的距离。则第一次相遇时 second所走的距离是 x+y+z+y，同时 second 走过的距离是 first 的两倍，也就是 2(x+y)，所以我们有 x+y+z+y=2(x+y)，所以 x=zx=z。所以我们让 first 和 second 分别从 a,c 同时开始走，每次各走一步，走 z 步后会在 b 点相遇。
+
+时间复杂度分析：first总共走了 2x+y 步，second 总共走了 2x+2y+x 步，所以两个指针总共走了 5x+3y 步。由于当第一次 first走到 b 点时，second 最多追一圈即可追上 first，所以 y 小于环的长度，所以 x+y 小于等于链表总长度。所以总时间复杂度是 O(n)。

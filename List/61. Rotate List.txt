@@ -1,0 +1,28 @@
+Given a linked list, rotate the list to the right by k places, where k is non-negative.
+
+Example 1:
+
+Input: 1->2->3->4->5->NULL, k = 2
+Output: 4->5->1->2->3->NULL
+Explanation:
+rotate 1 steps to the right: 5->1->2->3->4->NULL
+rotate 2 steps to the right: 4->5->1->2->3->NULL
+Example 2:
+
+Input: 0->1->2->NULL, k = 4
+Output: 2->0->1->NULL
+Explanation:
+rotate 1 steps to the right: 2->0->1->NULL
+rotate 2 steps to the right: 1->2->0->NULL
+rotate 3 steps to the right: 0->1->2->NULL
+rotate 4 steps to the right: 2->0->1->NULL
+
+算法
+(模拟，链表) O(n)
+这道题中 k 可能很大，所以我们令 k=k%n，n是链表长度。
+
+为了避免处理边界问题，我们创建虚拟头结点，指向原链表的头结点。
+然后创建两个指针first, second，分别指向虚拟头结点，先让first向后移动 k 个位置，然后first和second同时向后移动，直到first走到链表最后一个元素。
+此时first指向链表末尾，second指向分界点。然后我们把链表从分界点处断开，然后把后半段接在前半段前面即可。
+
+时间复杂度分析：链表一共遍历2遍，所以总时间复杂度是 O(n)。

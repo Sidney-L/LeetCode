@@ -1,0 +1,21 @@
+Sort a linked list using insertion sort.
+
+A graphical example of insertion sort. The partial sorted list (black) initially contains only the first element in the list.
+With each iteration one element (red) is removed from the input data and inserted in-place into the sorted list
+ 
+
+Algorithm of Insertion Sort:
+
+1. Insertion sort iterates, consuming one input element each repetition, and growing a sorted output list.
+
+2. At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, and inserts it there.
+
+3.It repeats until no input elements remain.
+
+
+算法
+(插入排序) O(n2)
+为了方便处理边界情况，我们建立虚拟头结点，指向原链表头部。
+然后扫描原链表，对于每个节点 v，从前往后扫描结果链表，找到第一个比 v 大的节点 u，将 v 插入到 u 之前。
+
+时间复杂度分析：一共遍历 n 个节点，对于每个节点找合适位置时，最多需要遍历 O(n) 次，所以总时间复杂度是 O(n2)。
