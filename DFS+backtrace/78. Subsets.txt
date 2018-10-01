@@ -1,0 +1,27 @@
+Given a set of distinct integers, nums, return all possible subsets (the power set).
+
+Note: The solution set must not contain duplicate subsets.
+
+Example:
+
+Input: nums = [1,2,3]
+Output:
+[
+  [3],
+  [1],
+  [2],
+  [1,2,3],
+  [1,3],
+  [2,3],
+  [1,2],
+  []
+]
+
+算法
+(集合的二进制表示) O(2^n n)
+假设集合大小是 nn，我们枚举 0…2n−1，一共 2n 个数。
+每个数表示一个子集，假设这个数的二进制表示的第 i 位是1，则表示该子集包含第 i 个数，否则表示不包含。
+
+另外，如果 n≥30，则 2n≥109，肯定会超时，所以我们可以断定 n≤30，可以用int型变量来枚举。
+
+时间复杂度分析：一共枚举 2n 个数，每个数枚举 n 位，所以总时间复杂度是 O(2^nn)。

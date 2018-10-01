@@ -1,0 +1,23 @@
+
+Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
+
+A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+
+Example:
+
+Input: "23"
+Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+Note:
+
+Although the above answer is in lexicographical order, your answer could be in any order you want.
+
+算法
+(深度优先搜索dfs) O(4l)
+可以通过手工或者循环的方式预处理每个数字可以代表哪些字母。
+使用深度优先搜索，每层递归尝试拼接一个新字母。
+递归到头，将当前字母串加入到答案中。
+注意，有可能数字串是空串，需要特盘。
+
+时间复杂度
+由于使用了递归的方式，时间复杂度与答案个数相同，设数字串长度为l，则最坏时间复杂度为O(4l)。
+

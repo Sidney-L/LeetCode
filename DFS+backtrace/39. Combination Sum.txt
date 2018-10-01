@@ -1,0 +1,31 @@
+Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+
+The same repeated number may be chosen from candidates unlimited number of times.
+
+Note:
+
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+Example 1:
+
+Input: candidates = [2,3,6,7], target = 7,
+A solution set is:
+[
+  [7],
+  [2,2,3]
+]
+Example 2:
+
+Input: candidates = [2,3,5], target = 8,
+A solution set is:
+[
+  [2,2,2,2],
+  [2,3,3],
+  [3,5]
+]
+
+算法
+(DFS枚举)
+在每一层搜索中，枚举这个数字添加几次。
+搜索的终止条件是层数超过的数组的长度或者当前数字组合等于目标值。
+剪枝：可以先将数组从小到大排序，搜索中如果sum!=target并且sum+candidates[i]>target，则可以直接终止之后的搜索，因为之后的数字都会比candidates[i]大，不会产生答案。

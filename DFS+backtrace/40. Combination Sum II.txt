@@ -1,0 +1,32 @@
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+
+Each number in candidates may only be used once in the combination.
+
+Note:
+
+All numbers (including target) will be positive integers.
+The solution set must not contain duplicate combinations.
+Example 1:
+
+Input: candidates = [10,1,2,7,6,1,5], target = 8,
+A solution set is:
+[
+  [1, 7],
+  [1, 2, 5],
+  [2, 6],
+  [1, 1, 6]
+]
+Example 2:
+
+Input: candidates = [2,5,2,1,2], target = 5,
+A solution set is:
+[
+  [1,2,2],
+  [5]
+]
+
+算法
+(DFS枚举)
+做法与Combination Sum很类似，只不过本题是每个数字仅用一次。
+此题仍然需要排序，目的是为了防止重复。
+防止重复的方法是，搜索时如果不想要当前层的数字，则需要找到下一个与之不同的数字才可以进行下一层的搜索。
