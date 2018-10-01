@@ -1,0 +1,29 @@
+Given a linked list, remove the n-th node from the end of list and return its head.
+
+Example:
+
+Given linked list: 1->2->3->4->5, and n = 2.
+
+After removing the second node from the end, the linked list becomes 1->2->3->5.
+Note:
+
+Given n will always be valid.
+
+Follow up:
+
+Could you do this in one pass?
+
+
+算法2
+(一次遍历)
+在头部之前添加保护结点。
+设置两个指针first和second，均指向保护结点。
+first指针先向后移动n+1个结点。
+然后firstfirst和secondsecond指针同时向后移动，直到first指针指向空，此时second结点指向的下一个结点需要删除。
+解释：
+始终保持两个指针之间间隔n个结点，在first到达终点时，second的下一个结点就是从结尾数第n个结点。
+
+时间复杂度
+O(L) 
+空间复杂度
+O(1)

@@ -1,0 +1,17 @@
+Given a sorted linked list, delete all duplicates such that each element appear only once.
+
+Example 1:
+
+Input: 1->1->2
+Output: 1->2
+Example 2:
+
+Input: 1->1->2->3->3
+Output: 1->2->3
+
+
+算法
+(线性扫描) O(n)
+从前往后扫描整个链表，如果一个节点和其后继节点相同，则直接删除后继节点，否则指针移动到后继节点。
+
+时间复杂度分析：整个链表只扫描一遍，所以时间复杂度是 O(n)。
