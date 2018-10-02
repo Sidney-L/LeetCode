@@ -1,0 +1,32 @@
+The n-queens puzzle is the problem of placing n queens on an n×n chessboard such that no two queens attack each other.
+
+Given an integer n, return the number of distinct solutions to the n-queens puzzle.
+
+Example:
+
+Input: 4
+Output: 2
+Explanation: There are two distinct solutions to the 4-queens puzzle as shown below.
+[
+ [".Q..",  // Solution 1
+  "...Q",
+  "Q...",
+  "..Q."],
+
+ ["..Q.",  // Solution 2
+  "Q...",
+  "...Q",
+  ".Q.."]
+]
+
+算法
+(暴力搜索) O(n!)
+暴力搜索所有方案。
+为了优化时间效率，定义 vector<bool>row, col, diag, anti_diag;，用来记录每一行、每一列、每条对角线上是否有皇后存在。
+
+搜索时需要记录4个状态：x,y,s,n分别表示横纵坐标、已摆放的皇后个数、棋盘大小。
+对于每步搜索，有两种选择：
+
+当前格子不放皇后，则转移到 dfs(x, y + 1, s, n);
+如果 (x,y) 所在的行、列、对角线不存在皇后，则当前格子可以摆放皇后，更新row, col, diag, anti_diag后转移到 dfs(x, y + 1, s + 1, n);，回溯时不要忘记恢复row, col, diag, anti_diag等状态。
+时间复杂度分析：由于 n 个皇后不能在同行同列，所以每行恰有一个皇后，我们计算一下在不考虑对角线的情况下，方案数的上限：第一行有 n 个位置可选，第二行有 n−1 个位置可选，依次类推，可得方案数最多是 n!。所以时间复杂度是 O(n!)。
