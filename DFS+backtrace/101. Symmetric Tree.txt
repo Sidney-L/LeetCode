@@ -1,0 +1,36 @@
+Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+
+For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
+
+    1
+   / \
+  2   2
+ / \ / \
+3  4 4  3
+But the following [1,2,2,null,3,null,3] is not:
+    1
+   / \
+  2   2
+   \   \
+   3    3
+Note:
+Bonus points if you could solve it both recursively and iteratively.
+
+
+
+算法1
+(递归) O(n)
+递归判断两个子树是否互为镜像。
+
+两个子树互为镜像当且仅当：
+
+两个子树的根节点值相等；
+第一棵子树的左子树和第二棵子树的右子树互为镜像，且第一棵子树的右子树和第二棵子树的左子树互为镜像；
+时间复杂度分析：从上到下每个节点仅被遍历一遍，所以时间复杂度是 O(n)。
+
+算法2
+(迭代) O(n)
+用栈模拟递归，对根节点的左子树，我们用中序遍历；对根节点的右子树，我们用反中序遍历。
+则两个子树互为镜像，当且仅当同时遍历两课子树时，对应节点的值相等。
+
+时间复杂度分析：树中每个节点仅被遍历一遍，所以时间复杂度是 O(n)。
