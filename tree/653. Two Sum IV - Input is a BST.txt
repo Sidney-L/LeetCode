@@ -1,0 +1,44 @@
+Given a Binary Search Tree and a target number, return true if there exist two elements in the BST such that their sum is equal to the given target.
+
+Example 1:
+Input: 
+    5
+   / \
+  3   6
+ / \   \
+2   4   7
+
+Target = 9
+
+Output: True
+Example 2:
+Input: 
+    5
+   / \
+  3   6
+ / \   \
+2   4   7
+
+Target = 28
+
+Output: False
+
+
+思路
+根据题目要求，要注意是两个元素的和构成目标数，不可以是一个元素自己等于目标数，或者一个元素自己加自己等于目标数。
+
+方法1 暴力求解
+遍历树，对于每个子节点检查是否有另一个节点跟它的和为目标数。
+
+复杂度分析
+时间复杂度 O(n2) 空间复杂度 O(1)
+因为对于每个节点都要遍历一次树，所以时间复杂度比较高。
+
+算法2 利用BST树排序节点
+首先将所有节点顺序取出来，将排序好的二叉树变成一个线性的排好序的队列，然后从数组两端向中间寻找可以满足条件的搭配。
+
+复杂度分析
+最坏情况相当于将所有节点遍历了两次，因此是O(n)的复杂度。
+
+时间复杂度 O(n) 空间复杂度 O(n)
+

@@ -1,0 +1,37 @@
+Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+
+According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”
+
+Given the following binary tree:  root = [3,5,1,6,2,0,8,null,null,7,4]
+
+        _______3______
+       /              \
+    ___5__          ___1__
+   /      \        /      \
+   6      _2       0       8
+         /  \
+         7   4
+Example 1:
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+Output: 3
+Explanation: The LCA of of nodes 5 and 1 is 3.
+Example 2:
+
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+Output: 5
+Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself
+             according to the LCA definition.
+Note:
+
+All of the nodes' values will be unique.
+p and q are different and both values will exist in the binary tree.
+
+算法
+(DFS) O(n)
+此题与Lowest Common Ancestor of a Binary Search Tree 最大的不同就是这道题给定的二叉树不再是二叉查找树。
+所以我们需要通过遍历整棵树，分别找到 p 和 q 结点到根结点的路径，然后枚举匹配路径上的点找到最近公共祖先。
+遍历的算法采用的深度优先搜索，搜索时，需要一个数组记录路径；在每一层尝试两个方向的路径，如果某一个方向找到了目标结点或者当前点就是目标结点，则当且结点加入数组，并返回 true；否则返回 false。
+最后根据两个数组的路径，找到最低的公共结点即可。
+时间复杂度
+由于需要遍历整棵树，每个结点仅遍历两次，故时间复杂度为O(n)。
