@@ -1,0 +1,30 @@
+Given an unsorted array of integers, find the length of longest increasing subsequence.
+
+Example:
+
+Input: [10,9,2,5,3,7,101,18]
+Output: 4 
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
+Note:
+
+There may be more than one LIS combination, it is only necessary for you to return the length.
+Your algorithm should run in O(n2) complexity.
+Follow up: Could you improve it to O(n log n) time complexity?
+
+算法1
+（动态规划）O(n2)
+用数组dp[i]记录以nums[i]结尾（即nums[i]为最后一个数字）的最长递增子序列的长度，则递推方程为dp[i]=max(dp[j]+1)，其中要求1≤j<i且nums[j]<nums[i]。
+
+时间复杂度分析：对每个i(1≤i≤n，都需要从1遍历到i，则时间复杂度为O(n2)，空间复杂度的话需要一个额外的dp数组，空间复杂度为O(n2)。
+
+算法2
+（动态规划 二分查找）O(nlogn)
+在解法1中，对于每个i，都需要遍历dp[1]到dp[i-1]，但其实是不必要的，因为dp[i]=max(dp[j]+1),1≤j<i且nums[j]<nums[i]，那么对于j而言，希望dp[j]越大越好，nums[j]越小越好，那么在数组中，若nums[p]≥nums[q]但dp[p]≤dp[q]，那么对于求dp[i]来说，nums[p]是没有用的。
+
+例如在数组[1,2,5,3,7,8]中，nums[2]=5,dp[2]=3（序列[1,2,5]）,nums[3]=3,dp[3]=3（序列[1,2,3]），那么对于数组中下一个数字7来说，下标为2的5就是没有用的，因为存在下标3，使得nums[3]<nums[2]且dp[3]≥dp[2]，那么我们就不用考虑下标为2的数字5了。
+
+因此我们可以维护一个新的数组help，help[i]表示最长子序列长度为i时的最小的结尾num值（例如在数组[1,2,5,3,7]中，长度为3的子序列有[1,2,3]，[1,2,5]，[2,5,7]三个，取最小的结尾数字，那么help[3]=3）。
+
+对于数字m，我们只需要找到找到最大的满足help[j] < m的j，那么就意味着把m接在help[j]这个数字后面就可以了，这个子序列的长度是j+1，同时我们需要判断m是否比原来的help[j+1]小，如果m更小的话就需要更新help[j+1]=m，这一定是一个单调递增的数组（因为要求子序列必须是单调递增的，那么序列长度为i+1的子序列最后一个数字一定比序列长度为i的子序列最后一个数字要大），那么我们就可以通过二分查找来找到满足条件的j，因此把原来查找的复杂度由O(n)降为O(logn)。
+
+时间复杂度分析：如上分析，对于每个m，复杂度为O(logn)，有n个数字，因此时间复杂度为O(nlogn)，需要额外的help数组，空间复杂度为O(n)。
