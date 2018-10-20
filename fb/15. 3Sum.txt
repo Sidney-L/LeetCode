@@ -1,0 +1,51 @@
+Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+
+Note:
+
+The solution set must not contain duplicate triplets.
+
+Example:
+
+Given array nums = [-1, 0, 1, 2, -1, -4],
+
+A solution set is:
+[
+  [-1, 0, 1],
+  [-1, -1, 2]
+]
+
+算法1
+(暴力枚举，排序去重) O(n3logn)
+暴力枚举方法很简单：三重循环枚举下标 i,j,k，然后判断 nums[i] + nums[j] + nums[k] 是否等于 0。若等于0则将三个数按照顺序加入答案集合。
+最后再统一排序去重。
+
+时间复杂度
+由于有三重循环，时间复杂度是O(n3)，最坏情况下会对O(n3)个三元组进行排序，所以最坏时间复杂度就是O(n3logn)。
+
+
+算法2
+(两重枚举，集合判重) O(n2)
+
+首先对nums进行从小到大排序。
+两重循环枚举nums数组，第一重循环仅枚举不重复的数字。
+第二重循环需要用两个集合hash和vis记录某个数字是否存在，在循环体重我们做两件事：
+
+判断-nums[st]−nums[i]是否在hash集合中；若存在，则可以记录进答案；并且需要向vis集合添加数字-nums[st]-nums[i]。若不存在，则向hash集合中添加数字nums[i]。
+做完1后需要判断vis集合中是否存在数字-nums[st]-nums[i]（显然如果1中刚刚添加过一定是存在的）；若存在，则删除hash集合中数字-nums[st]-nums[i]。
+解释：
+使用vis集合的目的是防止-nums[st]-nums[i]和nums[i]数对被重复计算入答案。
+
+时间复杂度
+排序时间复杂度是O(nlogn)O(nlogn)，枚举的时间复杂的是O(n2)，每次需要用集合操作平均O(1)，所以总时间复杂度为O(n2)，但常数较大。
+
+
+算法3
+(两重枚举，无重复构造) O(n2)
+延续算法2的思路，尝试不使用集合操作来判重。
+
+同样是一重循环st无重复枚举第一个数字，然后接下来采用两头向里寻找的方式无重复的构造剩下的两个数字，具体在循环中：
+1. 初始化l为st+1，r为n-1。
+2. 当l<r时，如果当前nums[l] + nums[r] == target，则增加答案并同时向后无重复移动l，向前无重复移动r；否则根据nums[l] + nums[r]与target的关系判断移动l还是移动r。
+
+时间复杂度
+显然是O(n2)。
