@@ -1,0 +1,28 @@
+Implement pow(x, n), which calculates x raised to the power n (xn).
+
+Example 1:
+
+Input: 2.00000, 10
+Output: 1024.00000
+Example 2:
+
+Input: 2.10000, 3
+Output: 9.26100
+Example 3:
+
+Input: 2.00000, -2
+Output: 0.25000
+Explanation: 2-2 = 1/22 = 1/4 = 0.25
+Note:
+
+-100.0 < x < 100.0
+n is a 32-bit signed integer, within the range [−231, 231 − 1]
+
+算法
+(快速幂) O(logn)
+按照定义，计算x的n次方是将n个x连乘，效率比较低，会超时。
+因为乘法具有结合律，考虑每次将一部分连乘批量计算好，作为最终答案的一部分。
+这就可以将n进行二进制拆分，若nn的二进制位的第k位是1，则ans可以乘上x2k。
+而计算x2k，只需每次将自身做平方即可。
+时间复杂度
+由于只进行O(logn)次乘法操作，故时间复杂度为O(logn)。
