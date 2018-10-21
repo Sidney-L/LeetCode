@@ -1,0 +1,23 @@
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+
+算法
+(哈希表) O(NLlogL)
+定义从string 映射到 vector<string>的哈希表
+我们将每个字符串的所有字符从小到大排序，将排好序的字符串作为key，然后将原字符串插入key对应的vector<string>中。
+
+时间复杂度分析：N 是字符串个数，L 是字符串平均长度。对于每个字符串，哈希表和vector的插入操作复杂度都是 O(1)，排序复杂度是 O(LlogL)。所以总时间复杂度是 O(NLlogL)。
