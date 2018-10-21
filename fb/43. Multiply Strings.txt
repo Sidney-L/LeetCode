@@ -1,0 +1,23 @@
+Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+
+Example 1:
+
+Input: num1 = "2", num2 = "3"
+Output: "6"
+Example 2:
+
+Input: num1 = "123", num2 = "456"
+Output: "56088"
+Note:
+
+The length of both num1 and num2 is < 110.
+Both num1 and num2 contain only digits 0-9.
+Both num1 and num2 do not contain any leading zero, except the number 0 itself.
+You must not use any built-in BigInteger library or convert the inputs to integer directly.
+
+算法
+(高精度乘法，模拟) O(nm)
+本题是经典的高精度乘法，可以直接模拟竖式乘法计算。
+乘积的最大长度为两个乘数的长度之和。
+时间复杂度
+竖式乘法为两层循环错位相乘，故时间按复杂度是O(nm)。

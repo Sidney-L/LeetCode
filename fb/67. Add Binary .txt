@@ -1,0 +1,27 @@
+Given two binary strings, return their sum (also a binary string).
+
+The input strings are both non-empty and contains only characters 1 or 0.
+
+Example 1:
+
+Input: a = "11", b = "1"
+Output: "100"
+Example 2:
+
+Input: a = "1010", b = "1011"
+Output: "10101"
+
+
+算法
+(模拟) O(n)
+模拟人工进行二进制加法的过程。
+
+假设输入的两个字符串是a和b。
+为了简化代码，我们进行如下操作：
+
+如果a的长度小于b的长度，我们交换a和b；
+翻转a和b，使得每个二进制数的最低位存储在字符串第0个位置；
+然后从低位到高位依次计算每一位，过程中需要记录前一位的进位。
+如果最高位的进位是1，则需要在最高位的位置补上1。
+
+时间复杂度分析：两个字符串遍历的次数是常数，所以总时间复杂度是 O(n)。
