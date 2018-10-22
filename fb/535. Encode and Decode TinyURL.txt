@@ -1,0 +1,12 @@
+Note: This is a companion problem to the System Design problem: Design TinyURL.
+TinyURL is a URL shortening service where you enter a URL such as https://leetcode.com/problems/design-tinyurl and it returns a short URL such as http://tinyurl.com/4e9iAk.
+
+Design the encode and decode methods for the TinyURL service. There is no restriction on how your encode/decode algorithm should work. You just need to ensure that a URL can be encoded to a tiny URL and the tiny URL can be decoded to the original UR
+
+Algorithm
+
+In this method, we make use of an inbuilt function \text{hashCode()}hashCode() to determine a code for mapping every URL. Again, the mapping is stored in a HashMap for decoding.
+
+The hash code for a String object is computed(using int arithmetic) as −
+
+s[0]*31^{(n - 1)} + s[1]*31^{(n - 2)} + ... + s[n - 1] , where s[i] is the ith character of the string, n is the length of the string.
