@@ -1,0 +1,21 @@
+Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array.
+
+Example 1:
+
+Input: [3,0,1]
+Output: 2
+Example 2:
+
+Input: [9,6,4,2,3,5,7,0,1]
+Output: 8
+Note:
+Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
+
+算法
+(基础数学) O(n)
+直接对数组中的数字求和，然后用n⋅(n+1)2−sum即可得到答案。
+
+时间复杂度
+只有一次求和，故时间复杂度为O(n)。
+空间复杂度
+只使用了若干额外的变量，故空间复杂度为O(1)。
