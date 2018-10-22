@@ -1,0 +1,21 @@
+Given a singly linked list, determine if it is a palindrome.
+
+Example 1:
+
+Input: 1->2
+Output: false
+Example 2:
+
+Input: 1->2->2->1
+Output: true
+Follow up:
+Could you do it in O(n) time and O(1) space?
+
+算法
+(链表操作) O(n)
+我们先将链表的后半段翻转，然后用两个指针分别从链表首尾开始往中间扫描，依次判断对应节点的值是否相等，如果都相等，说明是回文链表，否则不是。
+
+链表翻转参见 LeetCode 206. Reverse Linked List 中的 算法1——迭代翻转算法。
+
+空间复杂度分析：链表的迭代翻转算法仅使用额外 O(1) 的空间，所以本题也仅使用额外 O(1) 的空间。
+时间复杂度分析：整个链表总共被遍历4次，所以时间复杂度是 O(n)。
