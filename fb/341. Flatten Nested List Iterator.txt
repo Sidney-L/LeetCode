@@ -1,0 +1,26 @@
+Given a nested list of integers, implement an iterator to flatten it.
+
+Each element is either an integer, or a list -- whose elements may also be integers or other lists.
+
+Example 1:
+
+Input: [[1,1],2,[1,1]]
+Output: [1,1,2,1,1]
+Explanation: By calling next repeatedly until hasNext returns false, 
+             the order of elements returned by next should be: [1,1,2,1,1].
+Example 2:
+
+Input: [1,[4,[6]]]
+Output: [1,4,6]
+Explanation: By calling next repeatedly until hasNext returns false, 
+             the order of elements returned by next should be: [1,4,6].
+
+算法
+(dfs) O(n)
+为了方便处理，在初始化时我们先递归遍历整个链表中的所有整数，将它们存入vector<int>中。
+
+dfs时，如果遇到整数，则直接存入数组中；如果遇到嵌套链表，则递归遍历之。
+
+然后对于next()函数，我们依次返回vector<int>中的每个数；对于hasNext()函数，我们判断是否已经遍历完整个vector<int>；
+
+时间复杂度分析：初始化时链表中的每个整数仅被遍历一次，所以初始化的时间复杂度是 O(n)；next()函数每次返回一个数，时间复杂度是 O(1)；hasNext()函数只有一个判断，时间复杂度也是 O(1)。
