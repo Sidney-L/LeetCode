@@ -1,0 +1,20 @@
+Given a string, your task is to count how many palindromic substrings in this string.
+
+The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
+
+Example 1:
+Input: "abc"
+Output: 3
+Explanation: Three palindromic strings: "a", "b", "c".
+Example 2:
+Input: "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+Note:
+The input string length won't exceed 1000.
+
+算法
+(暴力枚举) O(n^2)
+每次固定回文子串的中间位置，然后向左右开始扩展；每次固定后，分为奇数长度和偶数长度两种情况，然后暴力统计答案即可。
+时间复杂度
+每次共有 O(n)个中间位置，固定后，最坏情况下需要 O(n) 的时间扩展回文串，故总时间复杂度为 O(n)。
