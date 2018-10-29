@@ -1,0 +1,28 @@
+Design a data structure that supports the following two operations:
+
+void addWord(word)
+bool search(word)
+search(word) can search a literal word or a regular expression string containing only letters a-z or .. A . means it can represent any one letter.
+
+Example:
+
+addWord("bad")
+addWord("dad")
+addWord("mad")
+search("pad") -> false
+search("bad") -> true
+search(".ad") -> true
+search("b..") -> true
+Note:
+You may assume that all words are consist of lowercase letters a-z.
+
+算法
+(trie树) add:O(L),search:O(nL)add:O(L),search:O(nL)
+我们可以用trie树来保存所有单词。
+
+因为插入的单词不包含通配符.，所以我们可以直接插入。
+难点在于如何查找包含通配符的单词。我们可以用DFS搜索：
+
+当遇到字母a-z时，直接进入trie树节点对应的儿子；
+当遇到通配符.时，枚举当前trie树节点的所有儿子；
+时间复杂度分析：假设单词的平均长度是 L，总共有 n 个单词。add操作会遍历 L 个节点，所以时间复杂度是 O(L)；search操作最坏情况下会遍历所有节点，所以时间复杂度是 O(nL)。
