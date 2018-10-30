@@ -19,3 +19,4 @@ Then 4 is the first bad version.
 整个序列可以分为两段，前半段都是成功的版本，后半段都是失败的版本。所以该问题具有二分性质，直接二分即可。
 
 时间复杂度分析：二分检索只会调用 logn 次API，所以时间复杂度是 O(logn)。
+If you are setting mid = (left + right)/ 2​, you have to be very careful. Unless you are using a language that does not overflow such as Python, left + right could overflow. One way to fix this is to use left + (right - left)/2 instead.
