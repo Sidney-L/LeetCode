@@ -1,0 +1,30 @@
+Given a binary tree, flatten it to a linked list in-place.
+
+For example, given the following tree:
+
+    1
+   / \
+  2   5
+ / \   \
+3   4   6
+The flattened tree should look like:
+
+1
+ \
+  2
+   \
+    3
+     \
+      4
+       \
+        5
+         \
+          6
+
+(树的遍历) O(n)
+这道题目考察了对树和链表的操作。
+
+我们先定义右链：指一棵子树最右侧的路径。
+我们从根节点开始迭代，每次将当前节点的左子树的右链，插入当前节点的右链，如下所示：
+
+时间复杂度分析：虽然有两重循环，但外层循环会将所有节点遍历一次，内层循环会将除了根节点之外的其他内部结点的右链遍历一次，所以每个节点最多被遍历两次，所以时间复杂度是 O(n)。
