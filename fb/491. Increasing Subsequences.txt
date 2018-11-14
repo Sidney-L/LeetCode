@@ -1,0 +1,17 @@
+Given an integer array, your task is to find all the different possible increasing subsequences of the given array, and the length of an increasing subsequence should be at least 2 .
+
+Example:
+Input: [4, 6, 7, 7]
+Output: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]
+Note:
+The length of the given array will not exceed 15.
+The range of integer in the given array is [-100,100].
+The given array may contain duplicates, and two equal integers should also be considered as a special case of increasing sequence.
+
+算法
+(暴力回溯) O(n2n)
+采用 DFS 进行暴力回溯，DFS状态为，当前已经递归到了第 d 个数字且记录下了之前选的子序列 cur 。
+此时，如果 cur 的长度大于等于 2，则可以直接到递归出口，累计答案。
+还可以继续从第 d 个数字开始（含）向后寻找下一个数字，这里需要用一个 unordered_map 记录已经选择过的数字。若找到比 cur 末尾不小的数字，且这个数字在这一层是第一次出现。假设找到的是第 i 个数字，则 cur 记录下 nums[i]，然后递归到第 i+1 个数字继续下去。
+时间复杂度
+最坏情况下，每个数字都有两个选择，选或者不选，故总共可能有 2n2n 个答案，累计答案需要 O(n)O(n) 的时间，故总时间复杂度为 O(n2n)。
