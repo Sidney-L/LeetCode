@@ -1,0 +1,21 @@
+Given a non-empty array of integers, return the k most frequent elements.
+
+Example 1:
+
+Input: nums = [1,1,1,2,2,3], k = 2
+Output: [1,2]
+Example 2:
+
+Input: nums = [1], k = 1
+Output: [1]
+Note:
+
+You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
+Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
+
+算法
+(哈希表，计数排序) O(n)
+首先用哈希表统计出所有数出现的次数。
+由于所有数出现的次数都在 1 到 n 之间，所以我们可以用计数排序的思想，统计出次数最多的前 k 个元素的下界。然后将所有出现次数大于等于下界的数输出。
+
+时间复杂度分析：用哈希表统计每个数出现次数的计算量是 O(n)，计数排序的计算量是 O(n)，最终用下界过滤结果的计算量也是 O(n)，所以总时间复杂度是 O(n)。
