@@ -1,0 +1,21 @@
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+
+Note:
+
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+Example 1:
+
+Input: [2,2,1]
+Output: 1
+Example 2:
+
+Input: [4,1,2,1,2]
+Output: 4
+
+算法
+(XOR) O(n)
+两个相同的数字经过异或之后会变为0。
+将数组所有元素异或在一起即可得到出现1次的元素值。
+时间复杂度
+仅遍历一次数组，故时间复杂度为O(n)。
