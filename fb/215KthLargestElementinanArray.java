@@ -1,6 +1,17 @@
 class Solution {
     public int findKthLargest(int[] nums, int k) {
-        return partitionSelect(nums, 0, nums.length-1, k);
+        //return partitionSelect(nums, 0, nums.length-1, k);
+        PriorityQueue<Integer> q = new PriorityQueue<Integer>(k);
+        for(int e: nums){
+            if(q.size() < k){
+                q.offer(e);
+            }
+            else if(e > q.peek()){
+                q.poll();
+                q.offer(e);
+            }
+        }
+        return q.peek();
     }
     
     private int partitionSelect(int[] a, int l, int r, int k){
