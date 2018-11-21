@@ -1,0 +1,38 @@
+Given two binary trees, write a function to check if they are the same or not.
+
+Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
+
+Example 1:
+
+Input:     1         1
+          / \       / \
+         2   3     2   3
+
+        [1,2,3],   [1,2,3]
+
+Output: true
+Example 2:
+
+Input:     1         1
+          /           \
+         2             2
+
+        [1,2],     [1,null,2]
+
+Output: false
+Example 3:
+
+Input:     1         1
+          / \       / \
+         2   1     1   2
+
+        [1,2,1],   [1,1,2]
+
+Output: false
+
+(递归) O(n)
+递归判断：两个二叉树相等，当且仅当根节点的值相等，且左右两个子树分别相等。
+时间复杂度分析：两棵二叉树分别遍历一遍，所以时间复杂度是 O(n)。
+
+(Bfs 迭代)
+同理
