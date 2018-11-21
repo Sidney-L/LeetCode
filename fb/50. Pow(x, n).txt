@@ -26,3 +26,4 @@ n is a 32-bit signed integer, within the range [−231, 231 − 1]
 而计算x2k，只需每次将自身做平方即可。
 时间复杂度
 由于只进行O(logn)次乘法操作，故时间复杂度为O(logn)。
+
