@@ -1,0 +1,29 @@
+Calculate the sum of two integers a and b, but you are not allowed to use the operator + and -.
+
+Example 1:
+
+Input: a = 1, b = 2
+Output: 3
+Example 2:
+
+Input: a = -2, b = 3
+Output: 1
+
+(位运算) O(1)
+用<异或>来算不带进位的和(异或：0⊕0=0，1⊕0=1，0⊕1=1，1⊕1=0)
+用<与>并<左移>一位来算进位
+递归计算<异或>结果(无进位和)和<相与>结果(进位)的和，直到无需进位
+举例：
+
+a=101
+
+b=011
+
+第一步异或，a∧b=110，最右位的和2需要进位；
+
+第二步相与，a&b=001，相与出来的结果表示的是需要进位的地方，将它左移一位得到010；
+
+第三步，递归调用getsum，求110110和010010的和。
+
+时间复杂度O(1)
+空间复杂度O(1)
