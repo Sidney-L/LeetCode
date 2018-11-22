@@ -1,0 +1,27 @@
+Given an integer array with no duplicates. A maximum tree building on this array is defined as follow:
+
+The root is the maximum number in the array.
+The left subtree is the maximum tree constructed from left part subarray divided by the maximum number.
+The right subtree is the maximum tree constructed from right part subarray divided by the maximum number.
+Construct the maximum tree by the given array and output the root node of this tree.
+
+Example 1:
+Input: [3,2,1,6,0,5]
+Output: return the tree root node representing the following tree:
+
+      6
+    /   \
+   3     5
+    \    / 
+     2  0   
+       \
+        1
+Note:
+The size of the given array will be in the range [1,1000].
+
+算法
+(递归) O(n2)
+采用递归算法，假设 build(l, r) 表示对数组中 [l, r] 闭区间的部分构造二叉树；
+首先找出最大值及其所在位置 max_i，然后构造一个新的结点 rt，递归 build(l, max_i - 1) 和 build(max_i + 1, r) 分别作为 rt 的左右儿子，最后返回该结点 rt。
+时间复杂度
+最坏情况下，每次寻找的最大值都在当前区间的最左边，即数组是有序数组，这样就会有 n 层递归，总共需要 n + (n - 1) + (n - 2) + … + 1 次计算，T(n) = O(n) + T(n-1), 所以时间复杂度是 O(n^2)。
