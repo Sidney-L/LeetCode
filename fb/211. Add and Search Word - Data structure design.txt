@@ -17,7 +17,7 @@ Note:
 You may assume that all words are consist of lowercase letters a-z.
 
 算法
-(trie树) add:O(L),search:O(nL)add:O(L),search:O(nL)
+(trie树) add:O(L),search:O(nL)
 我们可以用trie树来保存所有单词。
 
 因为插入的单词不包含通配符.，所以我们可以直接插入。

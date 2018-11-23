@@ -10,13 +10,13 @@ You must do this in-place without making a copy of the array.
 Minimize the total number of operations.
 
 算法1 O(n^2)
-Last记录最末非0位置，i从前到last扫描， 遇到0last以前全体前移， last位置变0再指向前一个
+Last记录最末非0位置，i从前到last扫描， 遇到0, last以前全体前移， last位置变0再指向前一个
 
 
 算法2
 (双下标移动) O(n)
-设立下标 i 表示当前第一个可以防止非零元素的位置，下标 j 表示当前访问到的数组下标。
+设立下标 i 表示当前第一个可以放置非零元素的位置，下标 j 表示当前访问到的数组下标。
 j每次向后移动时，如果nums[j] != 0，则将nums[i]赋值为nums[j]，同时i++。
 最后将 i 到末尾的所有元素赋0即可。
 时间复杂度
-每个位置仅被遍历和赋值各一次，故时间复杂度为O(n)O(n)。
+每个位置仅被遍历和赋值各一次，故时间复杂度为O(n)。
