@@ -1,0 +1,24 @@
+Implement a basic calculator to evaluate a simple expression string.
+
+The expression string contains only non-negative integers, +, -, *, / operators and empty spaces . The integer division should truncate toward zero.
+
+Example 1:
+
+Input: "3+2*2"
+Output: 7
+Example 2:
+
+Input: " 3/2 "
+Output: 1
+Example 3:
+
+Input: " 3+5 / 2 "
+Output: 5
+Note:
+
+You may assume that the given expression is always valid.
+Do not use the eval built-in library function.
+
+算法1
+(栈) O(n)
+这道题主要是需要考虑加减和乘除的优先级问题，用栈来处理，遇到加减就把数字压栈，遇到乘除就把栈顶弹出，与数字进行乘除处理。主要注意的是运算符是放在两个数字的中间，而我们想要的是在遇到运算符时，用于运算的两个数字已经被解析出来了，因此用sign来记录前一个运算符，在遇到一个新的运算符或者到字符串的结尾时再考虑对前一个运算符进行处理。
