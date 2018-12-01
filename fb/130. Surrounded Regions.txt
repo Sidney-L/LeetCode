@@ -1,0 +1,30 @@
+Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
+
+A region is captured by flipping all 'O's into 'X's in that surrounded region.
+
+Example:
+
+X X X X
+X O O X
+X X O X
+X O X X
+After running your function, the board should be:
+
+X X X X
+X X X X
+X X X X
+X O X X
+Explanation:
+
+Surrounded regions shouldn’t be on the border, which means that any 'O' on the border of the board are not flipped to 'X'. Any 'O' that is not on the border and it is not connected to an 'O' on the border will be flipped to 'X'. Two cells are connected if they are adjacent cells connected horizontally or vertically.
+
+算法
+(Flood Fill, 深度优先遍历) O(n2)
+逆向考虑问题，我们先统计出哪些区域不会被攻占，然后将其它区域都变成'X'即可。
+
+具体做法如下：
+
+开一个二维布尔数组，记录哪些区域被遍历过。
+枚举所有边界上的'O'，从该位置做Flood Fill，即做深度优先遍历，只遍历是'O'的位置，并将所有遍历到的位置都标记成true。
+将所有未遍历到的位置变成'X'。
+时间复杂度分析：每个位置仅被遍历一次，所以时间复杂度是 O(n2)，其中 n 是地图的边长。
