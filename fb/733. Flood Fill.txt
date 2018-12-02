@@ -1,0 +1,41 @@
+An image is represented by a 2-D array of integers, each integer representing the pixel value of the image (from 0 to 65535).
+
+Given a coordinate (sr, sc) representing the starting pixel (row and column) of the flood fill, and a pixel value newColor, "flood fill" the image.
+
+To perform a "flood fill", consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color as the starting pixel), and so on. Replace the color of all of the aforementioned pixels with the newColor.
+
+At the end, return the modified image.
+
+Example 1:
+Input: 
+image = [[1,1,1],[1,1,0],[1,0,1]]
+sr = 1, sc = 1, newColor = 2
+Output: [[2,2,2],[2,2,0],[2,0,1]]
+Explanation: 
+From the center of the image (with position (sr, sc) = (1, 1)), all pixels connected 
+by a path of the same color as the starting pixel are colored with the new color.
+Note the bottom corner is not colored 2, because it is not 4-directionally connected
+to the starting pixel.
+Note:
+
+The length of image and image[0] will be in the range [1, 50].
+The given starting pixel will satisfy 0 <= sr < image.length and 0 <= sc < image[0].length.
+The value of each color in image[i][j] and newColor will be an integer in [0, 65535].
+
+算法1
+(DFS) O(N)
+洪水填充/简单染色问题。
+
+当前点(x,y)的四周可以借助两个数组来表示，dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1}，那么四周的坐标分别是x=sr+dx[i],y=sc+dy[i],i=0,1,2,3x=sr+dx[i],y=sc+dy[i],i=0,1,2,3
+依次检查当前点的四个邻接点是否满足条件（颜色一样），是的话递归调用floddFill()
+
+
+算法2
+(BFS) O(N)O(N)
+从当前像素点(sr, sc)开始，修改颜色，并遍历四周，相同颜色则加入queue
+
+没有得加的时候，从queue中取出像素点，设置为当前像素点
+
+重复1、2，直到queue为空
+
+注意，要用一个额外的二维数组表示某个点是否进入过queue，避免重复进入。

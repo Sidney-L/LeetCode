@@ -1,0 +1,25 @@
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+push(x) -- Push element x onto stack.
+pop() -- Removes the element on top of the stack.
+top() -- Get the top element.
+getMin() -- Retrieve the minimum element in the stack.
+Example:
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin();   --> Returns -3.
+minStack.pop();
+minStack.top();      --> Returns 0.
+minStack.getMin();   --> Returns -2.
+
+算法
+(单调栈) O(1)
+我们除了维护基本的栈结构之外，还需要维护一个单调栈，来实现返回最小值的操作。
+下面介绍如何维护单调栈：
+
+当我们向栈中压入一个数时，如果该数 ≤≤ 单调栈的栈顶元素，则将该数同时压入单调栈中；否则，不压入，这是由于栈具有先进后出性质，所以在该数被弹出之前，栈中一直存在一个数比该数小，所以该数一定不会被当做最小数输出。
+当我们从栈中弹出一个数时，如果该数等于单调栈的栈顶元素，则同时将单调栈的栈顶元素弹出。
+单调栈的栈顶元素，就是当前栈中的最小数。
+时间复杂度分析：四种操作都只有常数次入栈出栈操作，所以时间复杂度都是 O(1).

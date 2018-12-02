@@ -1,0 +1,27 @@
+Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
+
+Example 1:
+
+Input: n = 12
+Output: 3 
+Explanation: 12 = 4 + 4 + 4.
+Example 2:
+
+Input: n = 13
+Output: 2
+Explanation: 13 = 4 + 9.
+
+算法1
+(动态规划) O(n√n)
+令 f[i] 表示通过平方数组成 i 所需要的最少数量。
+则 f[i]=min(f[i−j∗j]+1)，其中 1≤j≤√i。
+f[n] 即为最终答案。
+时间复杂度
+Sum(i:1->n)√i
+
+算法2
+(BFS) O(n√n)
+通过 BFS 来优化动态规划的效率，可以将整个过程看做一张图，每个数字都是一个点，两个数字之间差距为平方数时有一条单向边。
+使用 BFS 来求从 0 到 n 的最短路。
+时间复杂度
+BFS的时间复杂度为 O(n+m)，这里的点数，也就是数字个数 n，边数同算法1中的分析是 O(√i)，故总时间复杂度仍然是 O(n√n)，但由于BFS可能能快速找到到结点 n 的路径，常数会比较优
