@@ -1,0 +1,41 @@
+Validate if a given string can be interpreted as a decimal number.
+
+Some examples:
+"0" => true
+" 0.1 " => true
+"abc" => false
+"1 a" => false
+"2e10" => true
+" -90e3   " => true
+" 1e" => false
+"e3" => false
+" 6e-1" => true
+" 99e2.5 " => false
+"53.5e93" => true
+" --6 " => false
+"-+3" => false
+"95a54e53" => false
+
+Note: It is intended for the problem statement to be ambiguous. You should gather all requirements up front before implementing one. However, here is a list of characters that can be in a valid decimal number:
+
+Numbers 0-9
+Exponent - "e"
+Positive/negative sign - "+"/"-"
+Decimal point - "."
+Of course, the context of these characters also matters in the input.
+
+Update (2015-02-10):
+The signature of the C++ function had been updated. If you still see your function signature accepts a const char * argument, please click the reload button to reset your code definition.
+
+算法
+(模拟，字符串处理) O(n2)
+先去除行首和行尾空格；
+行首如果有一个正负号，直接忽略；
+如果字符串为空或只有一个'.'，则不是一个合法数；
+循环整个字符串，去掉以下几种情况：
+(1) '.'或'e'多于1个;
+(2) '.'在'e'后面出现；
+(3) 'e'后面或前面为空，或者'e'前面紧跟着'.'；
+(4) 'e'后面紧跟着正负号，但正负号后面为空；
+剩下的情况都合法；
+时间复杂度分析：整个字符串只遍历一遍，所以时间复杂度是 O(n)。
